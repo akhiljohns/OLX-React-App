@@ -1,15 +1,19 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Import Routes from react-router-dom
+import Signup from "./Pages/Signup";
+import Home from "./Pages/Home";
 
-/**
- * ?  =====Import Components=====
- */
-import Home from './Pages/Home';
+import "./App.css";
 
 function App() {
   return (
     <div>
-      <Home />
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/signup" element={<Signup />} />/
+        </Routes> 
+      </Router>
     </div>
   );
 }
