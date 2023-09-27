@@ -104,10 +104,13 @@ export default function Signup() {
           });
       })
       .catch((error) => {
-        console.log("Error creating user: ", error);
+        // console.log("Error creating user: ", error);
         if (error.message.includes("(auth/invalid-email)")) {
           document.getElementById("errMsg").innerText =
             "!! Invalid Email Format. Please use a valid Email !!";
+        } else{
+          document.getElementById("errMsg").innerText =
+            "Server Timed Out, Try Again After Some Time";
         }
       })
     .finally(() => {

@@ -49,12 +49,12 @@
 }
 
 
-  .signupParentDiv p {
-font-size: 10px;
-font-weight: bold;
-margin-top: 10px;
-color: red;
-  }
+.loginParentDiv p {
+  font-size: 10px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: red;
+    }
   .loader-container {
     position: fixed;
     top: 50%;

@@ -28,19 +28,31 @@ function Login() {
           uid: userCredential.user.uid,
           // You can include additional user information here
         };
-        console.log('User logged in:', user);
+        // console.log('User logged in:', user);
     
         // Store a flag in localStorage to indicate that the user is logged in
-        localStorage.setItem('isLoggedIn', 'true');
+        // localStorage.setItem('isLoggedIn', 'true');
     
         // Store the user object as a JSON string in localStorage
-        localStorage.setItem('user', JSON.stringify(user));
+        // localStorage.setItem('user', JSON.stringify(user));
     
         // Redirect the user to the desired page
         navigate("/");
       })
       .catch((error) => {
-        console.log("LOGIN ERROR -=-=-=-=-=-", error);
+        console.log("LOGIN ERROR", error);
+        if (error.message.includes("email")) {
+          document.getElementById("errMsg").innerText =
+            "!! Invalid Email Format. Please use a valid Email !!";
+        }
+       else if (error.message.includes("credentials")) {
+          document.getElementById("errMsg").innerText =
+            "!! Email or Password Maybe Incorrect !!";
+        }
+        else{
+          document.getElementById("errMsg").innerText =
+            "Server Timed Out, Try Again After Some Time";
+        }
       })
       .finally(() => {
         setLoading(false); // Set loading to false when user data processing is complete
