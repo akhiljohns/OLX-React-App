@@ -16,7 +16,6 @@ function Login() {
             type="email"
             id="fname"
             name="email"
-            defaultValue="John"
           />
           <br />
           <label htmlFor="lname">Password</label>
@@ -26,13 +25,13 @@ function Login() {
             type="password"
             id="lname"
             name="password"
-            defaultValue="Doe"
           />
           <br />
           <br />
           <button>Login</button>
         </form>
-        <a>Signup</a>
+        <a href="/signup">Signup</a>
+        <p id="errMsg"></p>
       </div>
     </div>
   );

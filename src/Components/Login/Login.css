@@ -34,5 +34,24 @@
     display: flex;
     justify-content: center;
     cursor: pointer;
+    text-decoration: none; /* Remove underline */
+    color: black; /* Set initial text color to black */
+    font-weight: bold; /* Increase font size on hover */
+    font-size: 16px; /* Set initial font size */
+    transition: all 0.3s ease; /* Add smooth transition on hover */
   }
   
+
+.loginParentDiv a:hover {
+  color: rgb(2, 0, 0); /* Change text color on hover */
+  font-weight: bold; /* Increase font size on hover */
+  transform: scale(1.2); /* Enlarge the text on hover */
+}
+
+
+  .signupParentDiv p {
+font-size: 10px;
+font-weight: bold;
+margin-top: 10px;
+color: red;
+  }
