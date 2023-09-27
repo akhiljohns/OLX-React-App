@@ -1,4 +1,4 @@
-import React, { useState ,useContext} from 'react';
+import React, { useState, useContext } from 'react';
 import Logo from '../../olx-logo.png';
 import './Login.css';
 import { FirebaseContext } from "../../Store/Context";
@@ -8,18 +8,19 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-
+import { Waveform } from "@uiball/loaders";
 
 function Login() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false); // Loading state
   const { firebaseApp } = useContext(FirebaseContext);
   const auth = getAuth(firebaseApp);
-  
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
+    setLoading(true); // Set loading to true when starting user data processing
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = {
@@ -40,9 +41,12 @@ function Login() {
       })
       .catch((error) => {
         console.log("LOGIN ERROR -=-=-=-=-=-", error);
+      })
+      .finally(() => {
+        setLoading(false); // Set loading to false when user data processing is complete
       });
   };
-  
+
   return (
     <div>
       <div className="loginParentDiv">
@@ -75,6 +79,7 @@ function Login() {
         </form>
         <a href="/signup">Signup</a>
         <p id="errMsg"></p>
+        {loading && <div className="loader-container"> <Waveform /></div>}
       </div>
     </div>
   );

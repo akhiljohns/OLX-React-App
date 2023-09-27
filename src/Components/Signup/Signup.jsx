@@ -109,25 +109,25 @@ export default function Signup() {
           document.getElementById("errMsg").innerText =
             "!! Invalid Email Format. Please use a valid Email !!";
         }
-      });
-    // .finally(() => {
-    //   // Set loading to false when registration is complete
-    //   setLoading(false);
-    // });
+      })
+    .finally(() => {
+      // Set loading to false when registration is complete
+      setLoading(false);
+    });
   };
 
-  useEffect(() => {
-    if (loading) {
-      // Hide the loader after 10 seconds
-      const loaderTimeout = setTimeout(() => {
-        setLoading(false);
-      }, 1000); // 10 seconds in milliseconds
+  // useEffect(() => {
+  //   if (loading) {
+  //     // Hide the loader after 10 seconds
+  //     const loaderTimeout = setTimeout(() => {
+  //       setLoading(false);
+  //     }, 1000); // 10 seconds in milliseconds
 
-      return () => {
-        clearTimeout(loaderTimeout);
-      };
-    }
-  }, [loading]);
+  //     return () => {
+  //       clearTimeout(loaderTimeout);
+  //     };
+  //   }
+  // }, [loading]);
 
   return (
     <div>
