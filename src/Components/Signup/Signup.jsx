@@ -1,11 +1,10 @@
 import React, { useState, useContext, useEffect } from "react"; // Import useEffect
-
 import { useNavigate } from "react-router-dom";
 import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore"; // Import getDocs
 
 import Logo from "../../olx-logo.png";
 import "./Signup.css";
-import { Waveform } from '@uiball/loaders'
+import { Waveform } from "@uiball/loaders";
 import { FirebaseContext } from "../../Store/FirebaseContext";
 import {
   getAuth,
@@ -44,34 +43,36 @@ export default function Signup() {
         phoneExists = true;
       }
     });
-// Inside the if (emailExists) block
-if (emailExists) {
-  // Set the error message within the <p> element
-  document.getElementById('errMsg').innerText = '!! Email Already Exists !!';
-  console.error("Email already exists.");
-  // You can show an error message or do something else here
-  return;
-}
+    // Inside the if (emailExists) block
+    if (emailExists) {
+      // Set the error message within the <p> element
+      document.getElementById("errMsg").innerText =
+        "!! Email Already Exists !!";
+      console.error("Email already exists.");
+      // You can show an error message or do something else here
+      return;
+    }
 
-// // Check if email contains "@gmail.com" at the end
-// if (!email.endsWith("@gmail.com")) {
-//   // Set the error message within the <p> element
-//   document.getElementById('errMsg').innerText = '!! Invalid Email Format. Please use "@gmail.com" !!';
-//   console.error("Invalid email format.");
-//   // You can show an error message or do something else here
-//   return;
-// }
+    // // Check if email contains "@gmail.com" at the end
+    // if (!email.endsWith("@gmail.com")) {
+    //   // Set the error message within the <p> element
+    //   document.getElementById('errMsg').innerText = '!! Invalid Email Format. Please use "@gmail.com" !!';
+    //   console.error("Invalid email format.");
+    //   // You can show an error message or do something else here
+    //   return;
+    // }
 
     if (phoneExists) {
       // Handle phone number already exists
-  document.getElementById('errMsg').innerText = '!! Phone Number Already Exists !!';
+      document.getElementById("errMsg").innerText =
+        "!! Phone Number Already Exists !!";
       console.error("Phone number already exists.");
       // You can show an error message or do something else here
       return;
     }
 
-     // Set loading to true when starting registration
-     setLoading(true);
+    // Set loading to true when starting registration
+    setLoading(true);
 
     // If email and phone are unique, proceed with user registration
     createUserWithEmailAndPassword(auth, email, password)
@@ -105,18 +106,14 @@ if (emailExists) {
       .catch((error) => {
         console.log("Error creating user: ", error);
         if (error.message.includes("(auth/invalid-email)")) {
-            document.getElementById('errMsg').innerText = '!! Invalid Email Format. Please use a valid Email !!';
-            
+          document.getElementById("errMsg").innerText =
+            "!! Invalid Email Format. Please use a valid Email !!";
         }
-        
-      })
-      // .finally(() => {
-      //   // Set loading to false when registration is complete
-      //   setLoading(false);
-      // });
-
-
-
+      });
+    // .finally(() => {
+    //   // Set loading to false when registration is complete
+    //   setLoading(false);
+    // });
   };
 
   useEffect(() => {
@@ -133,7 +130,7 @@ if (emailExists) {
   }, [loading]);
 
   return (
-    <div >
+    <div>
       <div className="signupParentDiv">
         <img width="200px" height="200px" src={Logo} alt="OLX Logo" />
         <form onSubmit={handleSubmit}>
@@ -144,19 +141,19 @@ if (emailExists) {
             type="text"
             value={username}
             onChange={(e) => {
-              // Remove any non-alphabetic characters from the input
               const formattedUsername = e.target.value.replace(
-                /[^A-Za-z]/g,
+                /[^A-Za-z ]/g, // Pattern allowing letters and spaces
                 ""
               );
               setUsername(formattedUsername);
+             
+              
             }}
             id="fname"
             name="name"
-            pattern="[A-Za-z]*"
+           
             title="Please Enter Only Alphabetic Characters"
             required
-
           />
 
           <br />
@@ -171,7 +168,6 @@ if (emailExists) {
             name="email"
             title="Please Enter A Valid Email"
             required
-
           />
           <br />
           <label htmlFor="phone">Phone</label>
@@ -212,19 +208,21 @@ if (emailExists) {
             title="Password Should Contain 6 Characters"
             required
           />
- <br />
+          <br />
           <br />
           <button className="hvr-radial-out" type="submit" disabled={loading}>
             {loading ? "Signing Up..." : "Signup"}
           </button>
         </form>
-        <a href="/login" className="hvr-grow-shadow">Login</a>
+        <a href="/login" className="hvr-grow-shadow">
+          Login
+        </a>
         <p id="errMsg"></p>
         {loading && (
-        <div className="loader-container">
-          <Waveform />
-        </div>
-      )}
+          <div className="loader-container">
+            <Waveform />
+          </div>
+        )}
       </div>
     </div>
   );
