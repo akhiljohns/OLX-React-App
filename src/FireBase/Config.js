@@ -1,17 +1,18 @@
+
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore'; // Import Firestore
 import 'firebase/storage';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAKZBrz_A-SSTD77Ubkm8zwj-4WS-nPEBo",
-    authDomain: "olx-rc.firebaseapp.com",
-    projectId: "olx-rc",
-    storageBucket: "olx-rc.appspot.com",
-    messagingSenderId: "58938089746",
-    appId: "1:58938089746:web:cf73f6b603897eb9fed3cb",
-    measurementId: "G-D1HNB31Y06"
-  }
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID 
+};
 
 
 const firebaseApp = initializeApp(firebaseConfig);
