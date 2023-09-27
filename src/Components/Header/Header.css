@@ -123,6 +123,10 @@
   font-weight: bold;
 }
 
+.boldCapitalizedText:hover{
+  cursor: pointer;
+}
+
 .logout{
   transition: transform 0.2s;
 }
