@@ -4,6 +4,8 @@ import Header from "../Header/Header";
 import { FirebaseContext, AuthContext } from "../../Store/Context";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Import the necessary functions
 import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+
 
 const Create = () => {
   const [name, setName] = useState("");
@@ -13,8 +15,10 @@ const Create = () => {
 
   const { firebase } = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
-
   const firestore = getFirestore(firebase);
+
+  const navigate = useNavigate();
+
 
   const date = new Date();
 
@@ -36,7 +40,7 @@ const Create = () => {
                 name,
                 category,
                 price,
-                downloadURL,
+               url: downloadURL,
                 userId: user.uid,
                 createdAt: date,
               };
@@ -47,6 +51,7 @@ const Create = () => {
               addDoc(productsCollection, productData)
                 .then(() => {
                   console.log("Product data saved to Firestore successfully!");
+                  navigate('/')
                 })
                 .catch((error) => {
                   console.log(
