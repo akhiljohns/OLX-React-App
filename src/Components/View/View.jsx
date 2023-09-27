@@ -1,27 +1,59 @@
-import React from 'react';
+import React ,{ useContext, useEffect, useState } from 'react';
 
 import './View.css';
+import { PostContext } from '../../Store/PostContext';
+import { element } from 'prop-types';
+import { FirebaseContext } from '../../Store/Context';
+import { firestore } from '../../FireBase/Config';
+import { collection, getDocs, where,  query as firestoreQuery } from '@firebase/firestore'; // Import the 'query' function
+
 function View() {
+
+  const [userDetails, setUserDetails] = useState()
+const {postDetails} = useContext(PostContext)
+
+const { firebase } = useContext(FirebaseContext);
+
+useEffect(() => {
+  const userId = postDetails ? postDetails.userId : null;
+  const usersRef = collection(firestore, 'users');
+  const query = firestoreQuery(usersRef, where('id', '==', userId));
+
+  getDocs(query)
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        setUserDetails(doc.data());
+      });
+    })
+    .catch((error) => {
+      console.error('Error fetching user details:', error);
+    });
+}, [postDetails, firestore]);
+
   return (
     <div className="viewParentDiv">
       <div className="imageShowDiv">
         <img
-          src="../../../Images/R15V3.jpg"
+          src={postDetails.url}
           alt=""
         />
       </div>
       <div className="rightSection">
-        <div className="productDetails">
-          <p>&#x20B9; 250000 </p>
-          <span>YAMAHA R15V3</span>
-          <p>Two Wheeler</p>
-          <span>Tue May 04 2021</span>
-        </div>
-        <div className="contactDetails">
+      {postDetails && (
+  <div className="productDetails">
+    <p>&#x20B9; {postDetails.price} </p>
+    <span>{postDetails.name}</span>
+    <p>{postDetails.category}</p>
+    <span>{postDetails.createdAt}</span>
+  </div>
+)}
+
+    {  userDetails &&  <div className="contactDetails">
           <p>Seller details</p>
-          <p>No name</p>
-          <p>1234567890</p>
+          <p>{userDetails.username}</p>
+          <p>{userDetails.phone}</p>
         </div>
+         }
       </div>
     </div>
   );

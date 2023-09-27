@@ -67,7 +67,9 @@ function Header() {
         </div>
           
 
-        <div className="sellMenu">
+        <div className="sellMenu" onClick={()=>{
+          navigate('/create')
+        }}>
           <SellButton></SellButton>
           <div className="sellMenuContent">
             <SellButtonPlus></SellButtonPlus>

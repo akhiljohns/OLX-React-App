@@ -8,6 +8,8 @@ import View from "./Pages/ViewPost";
 import { AuthContext, FirebaseContext } from "./Store/Context";
 import "./App.css";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Post from "./Store/PostContext";
+
 function App() {
   const { setUser } = useContext(AuthContext);
   const { firebase } = useContext(FirebaseContext);
@@ -25,7 +27,10 @@ function App() {
   }, [firebase, setUser]);
 
   return (
+
     <div>
+    <Post>
+
       <Router>
         <Routes>
           <Route exact path="/" element={<Home />} />
@@ -35,6 +40,7 @@ function App() {
           <Route path="/view" element={<View />} />
         </Routes>
       </Router>
+    </Post>
     </div>
   );
 }
