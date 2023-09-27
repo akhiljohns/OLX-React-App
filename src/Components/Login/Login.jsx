@@ -1,12 +1,13 @@
 import React, { useState ,useContext} from 'react';
 import Logo from '../../olx-logo.png';
 import './Login.css';
-import { FirebaseContext } from "../../Store/FirebaseContext";
+import { FirebaseContext } from "../../Store/Context";
 import {
   getAuth,
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 
 function Login() {
@@ -14,17 +15,34 @@ function Login() {
   const [password, setPassword] = useState('')
   const { firebaseApp } = useContext(FirebaseContext);
   const auth = getAuth(firebaseApp);
+  
+  const navigate = useNavigate();
 
-
-const handleLogin = (e) => {
-e.preventDefault()
-signInWithEmailAndPassword(auth,email,password).then(() => {
-alert('Login successful')
-}).catch((error)=> {
-console.log("LOGIN ERROR -=-=-=-=-=-",error)
-})
-}
-
+  const handleLogin = (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = {
+          email: userCredential.user.email,
+          uid: userCredential.user.uid,
+          // You can include additional user information here
+        };
+        console.log('User logged in:', user);
+    
+        // Store a flag in localStorage to indicate that the user is logged in
+        localStorage.setItem('isLoggedIn', 'true');
+    
+        // Store the user object as a JSON string in localStorage
+        localStorage.setItem('user', JSON.stringify(user));
+    
+        // Redirect the user to the desired page
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log("LOGIN ERROR -=-=-=-=-=-", error);
+      });
+  };
+  
   return (
     <div>
       <div className="loginParentDiv">

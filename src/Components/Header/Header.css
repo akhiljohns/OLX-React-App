@@ -116,6 +116,21 @@
   text-decoration: none;
 }
 
+.boldCapitalizedText {
+  text-decoration: none;
+  font-size: large;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.logout{
+  transition: transform 0.2s;
+}
+.logout:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
 .sellMenu {
   position: relative;
   cursor: pointer;

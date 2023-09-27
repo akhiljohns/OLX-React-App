@@ -5,7 +5,7 @@ import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore"; 
 import Logo from "../../olx-logo.png";
 import "./Signup.css";
 import { Waveform } from "@uiball/loaders";
-import { FirebaseContext } from "../../Store/FirebaseContext";
+import { FirebaseContext } from "../../Store/Context";
 import {
   getAuth,
   createUserWithEmailAndPassword,
