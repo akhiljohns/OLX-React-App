@@ -80,7 +80,7 @@ const Create = () => {
       .catch((error) => {
         console.error("Error uploading file:", error);
         navigate('/create');
-      }) .finally(() => {
+      }).finally(() => {
         // Set loading to false when registration is complete
         setLoading(false);
       });

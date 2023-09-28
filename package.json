@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "dotenv": "^16.3.1",
-    "path-browserify": "^1.0.1"
+    "path-browserify": "^1.0.1",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }

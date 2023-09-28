@@ -2,7 +2,6 @@ import React ,{ useContext, useEffect, useState } from 'react';
 
 import './View.css';
 import { PostContext } from '../../Store/PostContext';
-import { element } from 'prop-types';
 import { FirebaseContext } from '../../Store/Context';
 import { firestore } from '../../FireBase/Config';
 import { collection, getDocs, where,  query as firestoreQuery } from '@firebase/firestore'; // Import the 'query' function
@@ -11,8 +10,6 @@ function View() {
 
   const [userDetails, setUserDetails] = useState()
 const {postDetails} = useContext(PostContext)
-
-const { firebase } = useContext(FirebaseContext);
 
 useEffect(() => {
   const userId = postDetails ? postDetails.userId : null;
@@ -28,14 +25,14 @@ useEffect(() => {
     .catch((error) => {
       console.error('Error fetching user details:', error);
     });
-}, [postDetails, firestore]);
+}, [postDetails]);
 
   return (
     <div className="viewParentDiv">
       <div className="imageShowDiv">
         <img
           src={postDetails.url}
-          alt=""
+          alt="image"
         />
       </div>
       <div className="rightSection">
