@@ -16,20 +16,26 @@ module.exports = {
     },
   ],
   parserOptions: {
-    ecmaVersion:  'latest', // Use the specific ECMAScript version
+    ecmaVersion: 'latest', // Use the specific ECMAScript version
     sourceType: 'module',
   },
   plugins: ['react'],
   rules: {
-    // Add or modify rules as needed based on the warnings you want to address
+    // Set all possible ESLint rules to warnings
 
-    // Treat "jsx-a11y/img-redundant-alt" as a warning
-    'jsx-a11y/img-redundant-alt': 'warn',
+    // Possible ESLint warnings
+    'accessor-pairs': 'warn',
+    'array-bracket-newline': 'warn',
+    'array-bracket-spacing': 'warn',
+    'array-callback-return': 'warn',
+    'array-element-newline': 'warn',
+    'arrow-body-style': 'warn',
+    // ... Add more rules here ...
 
-    // Treat "react-hooks/exhaustive-deps" as a warning
-    'react-hooks/exhaustive-deps': 'warn',
-
-    // Treat "no-unused-vars" as a warning
-    'no-unused-vars': 'warn',
+    // React plugin rules as warnings
+    'react/boolean-prop-naming': 'warn',
+    'react/button-has-type': 'warn',
+    'react/default-props-match-prop-types': 'warn',
+    // ... Add more React rules here ...
   },
 };
