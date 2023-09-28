@@ -30,12 +30,16 @@ module.exports = {
     'array-callback-return': 'warn',
     'array-element-newline': 'warn',
     'arrow-body-style': 'warn',
-    // ... Add more rules here ...
+    'block-scoped-var': 'warn',
+    'class-methods-use-this': 'warn',
+    'comma-spacing': 'warn',
+    'complexity': 'warn',
+    // Add more rules here ...
 
     // React plugin rules as warnings
     'react/boolean-prop-naming': 'warn',
     'react/button-has-type': 'warn',
     'react/default-props-match-prop-types': 'warn',
-    // ... Add more React rules here ...
+    // Add more React rules here ...
   },
 };
