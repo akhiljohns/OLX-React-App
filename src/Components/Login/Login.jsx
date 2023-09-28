@@ -5,7 +5,7 @@ import { FirebaseContext } from "../../Store/Context";
 import {
   getAuth,
   signInWithEmailAndPassword,
-  updateProfile,
+  
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { Waveform } from "@uiball/loaders";

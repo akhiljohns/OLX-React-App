@@ -2,7 +2,6 @@ import React ,{ useContext, useEffect, useState } from 'react';
 
 import './View.css';
 import { PostContext } from '../../Store/PostContext';
-import { FirebaseContext } from '../../Store/Context';
 import { firestore } from '../../FireBase/Config';
 import { collection, getDocs, where,  query as firestoreQuery } from '@firebase/firestore'; // Import the 'query' function
 
@@ -32,7 +31,7 @@ useEffect(() => {
       <div className="imageShowDiv">
         <img
           src={postDetails.url}
-          alt="image"
+          alt=""
         />
       </div>
       <div className="rightSection">

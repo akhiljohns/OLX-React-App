@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { FirebaseContext } from '../../Store/Context';
-import { getFirestore, collection, addDoc } from 'firebase/firestore'; // Import the necessary Firestore functions
-import Heart from '../../assets/Heart';
+import { getFirestore, collection } from 'firebase/firestore'; // Import the necessary Firestore functions
 import './Post.css';
 import { onSnapshot } from 'firebase/firestore';
 import { PostContext } from '../../Store/PostContext';
