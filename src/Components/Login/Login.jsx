@@ -23,11 +23,11 @@ function Login() {
     setLoading(true); // Set loading to true when starting user data processing
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = {
-          email: userCredential.user.email,
-          uid: userCredential.user.uid,
-          // You can include additional user information here
-        };
+        // const user = {
+        //   email: userCredential.user.email,
+        //   uid: userCredential.user.uid,
+        //   // You can include additional user information here
+        // };
         // console.log('User logged in:', user);
     
         // Store a flag in localStorage to indicate that the user is logged in
