@@ -41,5 +41,15 @@ module.exports = {
     'react/button-has-type': 'warn',
     'react/default-props-match-prop-types': 'warn',
     // Add more React rules here ...
+
+    // Treat specific issues as warnings
+    'quotes': ['warn', 'single'], // Treat strings as warnings
+    'semi': 'warn', // Treat extra semicolons as warnings
+    'space-before-function-paren': 'warn', // Missing space before function parentheses
+    'no-trailing-spaces': 'warn', // Trailing spaces not allowed
+    'comma-spacing': 'warn', // Space required after ","
+    'comma-dangle': 'warn', // Unexpected trailing comma
+    
+    // Add more specific rules here for other issues if needed
   },
 };
